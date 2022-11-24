@@ -5,35 +5,6 @@ import Loader from "../loading/Loader";
 import styles from "./Autocomplete.module.sass";
 
 export default function Autocomplete() {
-	/*
-	 * 1. Create a state variable called "inputValue" that will be used to store the value of the input field.
-	 * 2. Create a state variable called "suggestions" that will be used to store the list of suggestions.
-	 * 3. Create a state variable called "showSuggestions" that will be used to determine whether or not to show the suggestions.
-	 * 4. Create a state variable called "selectedSuggestion" that will be used to store the index of the selected suggestion.
-	 * 5. Create a state variable called "loading" that will be used to determine whether or not to show the loading indicator.
-	 * 6. Create a state variable called "error" that will be used to store the error message.
-	 * 7. Create a state variable called "debouncedInputValue" that will be used to store the debounced value of the input field.
-	 * 8. Render an input with the following attributes:
-	 *   - type="text"
-	 *  - value={inputValue}
-	 * - onChange={handleInputChange}
-	 * - onKeyDown={handleKeyDown}
-	 * - placeholder="Search for names"
-	 * - aria-label="Search for names"
-	 * - aria-autocomplete="list"
-	 * - aria-controls="suggestions"
-	 * - aria-activedescendant={selectedSuggestion !== null ? `suggestion-${selectedSuggestion}` : null}
-	 * - aria-expanded={showSuggestions}
-	 * - aria-haspopup="listbox"
-	 * - aria-owns="suggestions"
-	 * - role="combobox"
-	 * 9. Render a list of suggestions if showSuggestions is true.
-	 * 10. Render a loading indicator if loading is true.
-	 * 11. Render an error message if error is not null.
-	 * 12. When the user types in the input field, the inputValue state variable should be updated and we should call https://6040127af3abf00017785815.mockapi.io/api/v3/users to fetch all users, after saving all users in the suggestions state variable the app need to show the suggestions filtered by what is the value in the input field.
-	 * 13. The app need to highlight the string that matches the value in the input field at the suggestions.
-	 *
-	 */
 	const [inputValue, setInputValue] = useState("");
 	const [suggestions, setSuggestions] = useState<User[]>([]);
 	const [selectedSuggestion, setSelectedSuggestion] = useState<User>();
@@ -105,6 +76,8 @@ export default function Autocomplete() {
 		return suggestions;
 	}, [debouncedValue, suggestions]);
 
+	//This makes it more performant than mapping and manually adding the <mark> tag
+	//But ideally we would have DOMPurify to sanitize it and prevent XSS
 	const highlightText = useCallback(
 		(text: string) => {
 			const regex = new RegExp(`(${debouncedValue})`, "gi");
