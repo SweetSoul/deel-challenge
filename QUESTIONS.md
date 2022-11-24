@@ -111,11 +111,11 @@ Function Component.
     - Add 'const' before the methods
 
 10.   List a few ways styles can be used with components.
-    - Stylesheet by importing it at the top of the file
-    - Stylesheet modules by importing it at the top of the file and giving it a name
-    - 'style' property in each element
-    - CSS-in-JS where you would use a lib to work with the JS in a JS, JSX, TS, TSX file
+      - Stylesheet by importing it at the top of the file
+      - Stylesheet modules by importing it at the top of the file and giving it a name
+      - 'style' property in each element
+      - CSS-in-JS where you would use a lib to work with the JS in a JS, JSX, TS, TSX file
 
 11.   How to render an HTML string coming from the server.
-    - dangerouslySetInnerHtml property
-    - Be careful with XSS so sanitize it first
+      - dangerouslySetInnerHtml property
+      - Be careful with XSS so sanitize it first
