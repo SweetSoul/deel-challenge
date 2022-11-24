@@ -146,7 +146,7 @@ export default function Autocomplete() {
 					) : (
 						<li className={styles.suggestion}>
 							<div className={styles.userInfo}>
-								<h4>No results found</h4>
+								<h4>{loading ? "Loading..." : "No results found"}</h4>
 							</div>
 						</li>
 					)}
